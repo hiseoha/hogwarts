@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    //reduce를 map처럼 사용하기
+
+    const arr = [3, 6, 8, 10, 13, 16, 22, 29];
+
+    const mapArr = arr.map(ele=> ele+2);
+
+    console.log(mapArr);
+
+    const mapArr2 = arr.map(ele =>{
+        if(ele%2){
+            return ele;
+        }
+        return ele*2;
+    })
+
+    console.log(mapArr2);
+
+    const arr5 = arr.reduce((acc, cur, idx) =>{
+        acc[idx] = cur+2;
+        return acc;
+    }, []);
+    console.log(arr5);
+
+    const arr6 = arr.reduce((acc, cur) =>{
+        acc.push(cur%2 ? cur: cur*2);
+        return acc;
+    }, []);
+    console.log(arr6);
+
+    //홀수만
+    const arr7 = arr.reduce((acc, cur) =>{
+        if(cur%2){
+            acc.push(cur);
+        } 
+        return acc;
+    }, []);
+    console.log(arr7);
+                                                                                                                                                                                
+</script>
+</html>

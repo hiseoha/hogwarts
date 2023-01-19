@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn">Click me</button>
+    <span>Total clicks: 0</span>
+</body>
+<script>
+    const $btn = document.querySelector('#btn');
+    const $span = document.querySelector('span');
+
+    let clickNum = 0;
+
+    function handleClick(){
+        clickNum += 1;
+        $span.innerHTML = `Total Clicks: ${clickNum}`;
+    }
+
+    $btn.addEventListener('click', handleClick);
+
+
+</script>
+</html>
