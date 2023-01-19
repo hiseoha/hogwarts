@@ -1,0 +1,103 @@
+*{
+    margin:0;
+    padding:0;
+    list-style: none;
+    box-sizing: border-box;
+    font-family: 'Ibarra Real Nova', 'Eulyoo1945';
+}
+
+@font-face {
+    font-family: 'Eulyoo1945' !important;
+    src: url(../fonts/ChosunCentennial/ChosunCentennial.eot);
+    src: url(../fonts/ChosunCentennial/ChosunCentennial.eot?#iefix) format('embedded-opentype'),
+         url(../fonts/ChosunCentennial/ChosunCentennial.woff) format('woff'),
+         url(../fonts/ChosunCentennial/ChosunCentennial.ttf) format('truetype');
+         unicode-range: U+AC00-D7A3, U+0020-002F, U+003A-0040, U+005B-0060, U+007B-007E;
+        }
+
+        
+@font-face {
+    font-family: 'Ibarra Real Nova' !important;
+    src: url(../fonts/ChosunCentennial/ChosunCentennial.eot);
+    src: url(../fonts/ChosunCentennial/ChosunCentennial.eot?#iefix) format('embedded-opentype'),
+         url(../fonts/ChosunCentennial/ChosunCentennial.woff) format('woff'),
+         url(../fonts/ChosunCentennial/ChosunCentennial.ttf) format('truetype');
+         unicode-range: U+0041-005A,  U+0061-007A, U+0030-0039;
+        }
+
+body{
+	width:100%;
+	height:100vh;
+    background-image: url(../../img/backgroundImg.jpg);
+}
+
+.join_main_container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 150px;
+}
+
+.join_box1{
+    width: 59.6vw;
+    height: 1180px;
+    border: 3px solid #363636;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.35%;
+    background-image: url(../../img/backgroundImg.jpg);
+}
+
+.join_box2{
+    width: 100%;
+    height: 100%;
+    border: 2px solid #363636;
+}
+
+#join_logo{
+    width: 150px;
+}
+
+.join_logo_box{
+    margin-top: 84px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+#join_logo_text{
+    margin-top: 35px;
+    color:#363636;
+    text-align: center;
+}
+
+#join_logo_text h1{
+    font-size: 36px;
+    letter-spacing: -0.01em;
+}
+
+#join_logo_text p{
+    font-size: 26px;
+}
+
+.join_contnets_box{
+    margin-top: 90px;
+}
+
+.join_contnets_box ul{
+    display: grid;
+    grid-template-columns: repeat(2, 45.5%);
+    grid-template-rows: repeat(4, 1fr);
+    padding: 0 13%;
+    gap: 9%;
+}
+
+.join_contnets_box ul li{
+    width: 100%;
+}
+
+.join_contnets_box ul li input{
+    width: 100%;
+}
