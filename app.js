@@ -63,17 +63,12 @@ app.post('/login', async (req, res) => {
 
             if(row.length){
                 if(myParam[1] !== row[0].pw){
-                    res.json({message: '비밀번호가 일치하지 않음'})
                     console.log('비밀번호가 일치하지 않음');
                 } else {
                     console.log('로그인 성공')
-                    req.session.loginData = 
-                    req.session.save(err => {if(err) console.log(err)})
-                    res.json({message: '성공'})
                 }
             }else {
                 console.log('아이디가 존재하지 않습니다');
-                res.json({message: '아이디가 존재하지 않습니다'})
             }
         });
         conn.release();

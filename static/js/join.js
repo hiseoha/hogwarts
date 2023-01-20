@@ -48,7 +48,6 @@
     }
 
     //주소 입력
-    
     const $joinSearchBtn = document.querySelector('.join_search_btn');
     $joinSearchBtn.addEventListener('click', kakaopost);
 
@@ -104,5 +103,22 @@
     // autoClose: false,
 }
 )};
+
+  //submit만 되게 
+  const $joinBtn = document.querySelector('.join_btn');
+
+  $joinBtn('click', e=>{
+    e.preventDefault();
+      
+    const $joinDef = document.querySelectorAll('.join_default');
+
+    $joinDef.forEach(ele=>{
+        if(!ele.value){
+            return false;
+        }
+    })
+
+    
+  })
     
 })();
