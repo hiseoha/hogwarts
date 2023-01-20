@@ -33,34 +33,35 @@
                             </li>
                             <li class="join_contnets_right">
                                 <p>ID <span>*</span></p>
-                                <input type="text" name="u_id">
-                                <p>*사용이 불가능한 아이디입니다.</p>
+                                <input type="text" name="u_id" class="join_alert_input">
+                                <p class="hidden join_alert">*사용이 불가능한 아이디입니다.</p>
                             </li>
                             <li class="join_contnets_left">
                                 <p>Password <span>*</span></p>
-                                <input type="password" name="u_pw">
-                                <p>*8~16자리 영문 대/소문자, 숫자, 특수문자를 조합해 주세요.</p>
+                                <input type="password" name="u_pw" class="join_alert_input">
+                                <p class="hidden join_alert">*8~16자리 영문 대/소문자, 숫자, 특수문자를 조합해 주세요.</p>
     
                             </li>
                             <li class="join_contnets_right">
                                 <p>Confirm Password <span>*</span></p>
-                                <input type="password" name="u_conPw">
-                                <p>*비밀번호가 일치하지 않습니다.</p>
+                                <input type="password" name="u_conPw" class="join_alert_input">
+                                <p class="hidden join_alert">*비밀번호가 일치하지 않습니다.</p>
     
                             </li>
                             <li class="join_contnets_left">
                                 <p>Address <span>*</span></p>
-                                <input type="text" name="u_address">
-                                <button>Search</button>
+                                <input type="text" name="u_address" class="join_alert_input">
+                                <button type="button" class="join_search_btn">Search</button>
+                                <p class="hidden join_alert">*주소를 입력해 주세요.</p>
                             </li>
                             <li class="join_contnets_left">
                                 <p>Detail Address </p>
-                                <input type="text" name="u_dAddress">
+                                <input type="text" name="u_dAddress" >
                             </li>
                             <li class="join_contnets_right">
-                                <p>E-mail </p>
-                                <input type="email" name="e_email">
-                                <p>*올바른 이메일 형식이 아닙니다.</p>
+                                <p>E-mail <span>*</span></p>
+                                <input type="email" name="e_email" class="join_alert_input">
+                                <p class="hidden join_alert">*올바른 이메일 형식이 아닙니다.</p>
                             </li>
                         </ul>
                         <div>
@@ -76,5 +77,6 @@
 
     </footer>
 </body>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script src="../static/js/join.js"></script>
 </html>

@@ -106,7 +106,7 @@ app.post('/join', async (req, res) => {
 
 });
 
-module.exports = router;
+// module.exports = router;
 
 app.listen(port, () => {
     console.log(`서버 실행 포트번호 ${port}`);
