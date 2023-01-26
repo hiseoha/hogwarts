@@ -115,8 +115,6 @@
             }
         }).open(
             {
-    // left: (window.screen.width / 2) - (width / 2),
-    // top: (window.screen.height / 2) - (height / 2),
     popupName: 'postcodePopup',
     // autoClose: false,
 }
@@ -143,7 +141,7 @@
 
     for(let i=0; i<$joinDefAlert.length; i++){
         if(!$joinDefAlert[i].classList.contains('hidden') || !$joinDef[i].value) {
-            alert('안 됨');
+            alert(`${$joinDefAlert[i].innerHTML.replace('* ','')}`);
             $joinDef[i].focus();
             $joinDefAlert[i].classList.toggle('hidden', false);
             submitResult = false;
@@ -158,6 +156,23 @@
     } 
 
     document.getElementById('join_frm').submit();
+    // 입학 편지
+
+    const $joinLetter = document.querySelector('.join_letter');
+    const $toName = document.querySelector('.join_letter_userName');
+
+    $toName.innerHTML = `${document.querySelector('.toName').value}`;
+
+    $joinLetter.classList.remove('hidden');
+    window.scrollTo(0,0);
 })
+
+
+    // 편지 닫음
+    const $letterCloseBtn = document.querySelector('.join_letter_closeBtn');
+
+    $letterCloseBtn.addEventListener('click', ()=>{
+        location.replace('http://192.168.0.132:3001/login');
+    })
 
 })();
