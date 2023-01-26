@@ -66,6 +66,7 @@ app.post('/login', async (req, res) => {
                     console.log('비밀번호가 일치하지 않음');
                 } else {
                     console.log('로그인 성공')
+                    res.redirect('/login');
                 }
             }else {
                 console.log('아이디가 존재하지 않습니다');
@@ -93,7 +94,7 @@ app.post('/join', async (req, res) => {
         conn.query(sql, (err, rows, fields) => {
             if(!err) {
                 console.log(rows);
-                res.redirect('/login');
+                // res.redirect('/login');
             }            
         });
         conn.release();

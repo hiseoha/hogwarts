@@ -8,11 +8,17 @@
                 $joinAlert[idx].classList.toggle('hidden', false);
             } else{
                 if(!idx){
+                    $joinAlert[idx].classList.toggle('hidden', true);
+                } else if(idx === 1){
                     idReg(ele, idx);
-                } else if(idx===1){
-                    pwReg(ele, idx);
                 } else if(idx ===2){
+                    pwReg(ele, idx);
+                } else if(idx === 3){
                     cpw(idx);
+                } else if(idx === 4){
+                    $joinAlert[idx].classList.toggle('hidden', true);
+                } else if(idx === 5){
+                    emailReg(ele, idx);
                 }
             }
         });
@@ -40,7 +46,7 @@
 
     //비밀번호 확인
     function cpw(idx){
-        if($input[1].value !== $input[2].value){
+        if($input[2].value !== $input[3].value){
             $joinAlert[idx].classList.toggle('hidden', false);
         } else{
             $joinAlert[idx].classList.toggle('hidden', true);
@@ -104,21 +110,32 @@
 }
 )};
 
-  //submit만 되게 
+    //이메일 정규식
+    function emailReg(ele, idx){
+        const EmailRegExp =  /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+        if(!EmailRegExp.test(ele.value)){
+            $joinAlert[idx].classList.toggle('hidden', false);
+        } else{
+            $joinAlert[idx].classList.toggle('hidden', true);
+        }
+    }
+
+  //submit만 되게
   const $joinBtn = document.querySelector('.join_btn');
 
-  $joinBtn('click', e=>{
+  $joinBtn.addEventListener('click', e=>{
     e.preventDefault();
-      
+    const $joinDefAlert = document.querySelectorAll('.join_alert');
     const $joinDef = document.querySelectorAll('.join_default');
 
-    $joinDef.forEach(ele=>{
-        if(!ele.value){
+    $joinDefAlert.forEach((ele, idx)=>{
+        if(!ele.classList.contains('hidden') || !$joinDef[idx].value) {
+            alert('안 됨');
             return false;
+        } else {
+            document.getElementById('join_frm').submit();
         }
     })
-
-    
   })
-    
+
 })();

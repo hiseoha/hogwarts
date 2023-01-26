@@ -24,49 +24,58 @@
                         <p>of Witchcraft and Wizardry</p>
                     </div>
                 </div>
-                <form action="" method="post">
+                <form action="" method="post" id="join_frm">
                     <div class="join_contnets_box">
                         <ul>
                             <li class="join_contnets_left">
                                 <p>Name <span>*</span></p>
-                                <input type="text" name="u_name" class="join_default">
+                                <input type="text" name="u_name" class="join_default join_alert_input" autocomplete="off">
+                                <p class="hidden join_alert">*이름을 입력해 주세요.</p>
                             </li>
                             <li class="join_contnets_right">
                                 <p>ID <span>*</span></p>
-                                <input type="text" name="u_id" class="join_alert_input join_default">
+                                <input type="text" name="u_id" class="join_alert_input join_default" autocomplete="off">
                                 <p class="hidden join_alert">*사용이 불가능한 아이디입니다.</p>
                             </li>
                             <li class="join_contnets_left">
                                 <p>Password <span>*</span></p>
-                                <input type="password" name="u_pw" class="join_alert_input join_default">
+                                <input type="password" name="u_pw" class="join_alert_input join_default" autocomplete="off">
                                 <p class="hidden join_alert">*8~16자리 영문 대/소문자, 숫자, 특수문자를 조합해 주세요.</p>
-    
+
                             </li>
                             <li class="join_contnets_right">
                                 <p>Confirm Password <span>*</span></p>
-                                <input type="password" name="u_conPw" class="join_alert_input join_default">
+                                <input type="password" name="u_conPw" class="join_alert_input join_default" autocomplete="off">
                                 <p class="hidden join_alert">*비밀번호가 일치하지 않습니다.</p>
-    
                             </li>
-                            <li class="join_contnets_left">
+                            <li class="join_contnets_left join_u_address">
                                 <p>Address <span>*</span></p>
-                                <input type="text" name="u_address" class="join_alert_input u_address join_default" readonly>
-                                <button type="button" class="join_search_btn">Search</button>
+                                <input type="text" name="u_address" class="join_alert_input u_address join_default" readonly autocomplete="off"><button type="button" class="join_search_btn">Search</button>
                                 <p class="hidden join_alert">*주소를 입력해 주세요.</p>
                             </li>
                             <li class="join_contnets_left">
                                 <p>Detail Address </p>
-                                <input type="text" name="u_dAddress" class="u_dAddress">
+                                <input type="text" name="u_dAddress" class="u_dAddress" autocomplete="off">
                             </li>
                             <li class="join_contnets_right">
                                 <p>E-mail <span>*</span></p>
-                                <input type="email" name="e_email" class="join_alert_input join_default">
+                                <input type="email" name="e_email" class="join_alert_input join_default" autocomplete="off">
                                 <p class="hidden join_alert">*올바른 이메일 형식이 아닙니다.</p>
                             </li>
+                            <li class="join_checkBox_list">
+                                <p>Accept</p>
+                                <div>
+                                    <label><input type="checkbox" name="" value="" />개인 정보 수집 동의 <span>*</span></label>
+                                    <label><input type="checkbox" name="" value="" />개인 정보 제3자 제공 동의 <span>*</span></label>
+                                    <label><input type="checkbox" name="" value="" />이메일 수신 동의</label>
+                                </div>
+                            </li>
+                            <li>
+                                <div>
+                                    <button type="button" class="join_btn">Send</button>
+                                </div>
+                            </li>
                         </ul>
-                        <div>
-                            <button class="join_btn">Send</button>
-                        </div>
                     </div>
                 </form>
             </div>
