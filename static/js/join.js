@@ -2,6 +2,7 @@
     const $input = document.querySelectorAll('.join_alert_input');
     const $joinAlert = document.querySelectorAll('.join_alert');
 
+    //blur
     $input.forEach((ele, idx) => {
         ele.addEventListener('blur', e=>{
             if(!ele.value){
@@ -16,12 +17,23 @@
                 } else if(idx === 3){
                     cpw(idx);
                 } else if(idx === 4){
-                    $joinAlert[idx].classList.toggle('hidden', true);
-                } else if(idx === 5){
                     emailReg(ele, idx);
                 }
             }
         });
+    })
+
+    //keyup
+    $input.forEach((ele, idx)=>{
+        ele.addEventListener('keyup', e=>{
+            if(idx === 1){
+                idReg(ele, idx);
+            } else if(idx ===2){
+                pwReg(ele, idx);
+            } else if(idx === 3){
+                cpw(idx);
+            }
+        })
     })
 
     //아이디 정규식
@@ -127,15 +139,25 @@
     e.preventDefault();
     const $joinDefAlert = document.querySelectorAll('.join_alert');
     const $joinDef = document.querySelectorAll('.join_default');
+    let submitResult;
 
-    $joinDefAlert.forEach((ele, idx)=>{
-        if(!ele.classList.contains('hidden') || !$joinDef[idx].value) {
+    for(let i=0; i<$joinDefAlert.length; i++){
+        if(!$joinDefAlert[i].classList.contains('hidden') || !$joinDef[i].value) {
             alert('안 됨');
+            $joinDef[i].focus();
+            $joinDefAlert[i].classList.toggle('hidden', false);
+            submitResult = false;
             return false;
         } else {
-            document.getElementById('join_frm').submit();
+            submitResult = true;
         }
-    })
-  })
+    }
+
+    if(!submitResult){
+        return false;
+    } 
+
+    document.getElementById('join_frm').submit();
+})
 
 })();
