@@ -32,6 +32,8 @@
                 pwReg(ele, idx);
             } else if(idx === 3){
                 cpw(idx);
+            } else if(idx === 4){
+                emailReg(ele, idx);
             }
         })
     })
@@ -147,6 +149,12 @@
             submitResult = false;
             return false;
         } else {
+            const $checked = document.querySelector('input[name="join_def_cheked"]');
+            if(!$checked.checked){
+                alert(`개인 정보 수집 동의에 체크해 주세요.`);
+                submitResult = false;
+                return false;
+            }
             submitResult = true;
         }
     }

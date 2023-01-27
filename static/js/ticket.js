@@ -21,7 +21,7 @@
             if(hours < 13){
                 return hours;
             } 
-            return hours>11&&hours-12<10 ? '0'+hours-12 : hours-12;
+            return hours > 12 || hours-12 < 10 ? '0'+ (hours-12) : hours-12;
         }
 
         $loginDate.innerHTML = `${year} - ${ month<10 ? '0'+ month : month} - ${ date<10 ? '0'+ date : date}`;
@@ -31,21 +31,36 @@
         $body.classList.add('modal_overlay');
     })
 
-    //로그인 데이터 저장
-
-    const $loginFormBtn = document.querySelector('.login_form_btn') ;
-
-    function postLoginData(){
-        const data = {
-            id: document.querySelector("input[name='u_id']").value,
-            pw: document.querySelector("input[name='u_pw']").value,
+    // 로그인 클릭 이벤트
+    const $login_btn = document.querySelector('.login_form_btn');
+    
+    $login_btn.addEventListener('click', e=>{
+        const $u_id = document.querySelector("input[name='u_id']").value, $u_pw = document.querySelector("input[name='u_pw']").value;
+        e.preventDefault();
+        if(!$u_id){
+            alert('아이디를 입력해 주세요.');
+            return false;
         }
-        axios.post('http://localhost:3000/login', data)
-        .then(data => console.log(data.data));
-    }
+        if(!$u_pw){
+            alert('비밀번호를 입력해 주세요.');
+            return false;
+        }
 
-    $loginFormBtn.addEventListener('click', e=>{
+        //로그인 데이터 저장
+    
+        function postLoginData(){
+            const data = {
+                id: $u_id,
+                pw: $u_pw,
+            }
+            axios.post('http://localhost:3001/login', data)
+            .then(data => console.log(data.data));
+        }
         postLoginData();
+
+        document.getElementById('login_frm').submit();
+
     })
+
 
 })();
