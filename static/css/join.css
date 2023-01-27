@@ -102,7 +102,7 @@ body{
     }
     .join_contnets_box ul{
         display: grid;
-        grid-template-columns: repeat(auto-fill, 45%);
+        grid-template-columns: repeat(auto-fill, 43%);
         grid-template-rows: repeat(4, 74px);
         padding: 0 12%;
         gap: 14%;
@@ -266,9 +266,25 @@ body{
 /* 체크박스 */
 
 .join_contnets_box ul .join_checkBox_list div label input[type="checkbox"]{
-    width: 16px;
-    
+    width: 14px;
+    margin-right: 10px;
 }
+
+input[type="checkbox"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;  
+    background-color: rgba(255, 255, 255, 0);
+    border-radius: 0;
+    cursor: pointer;
+    height: 14px;
+    width: 14px;
+    border: 1.5px solid #4e4e4e !important;
+  }
+
+  input[type="checkbox"]:checked {
+    background-color: #4e4e4e;
+  }
 
 /* 입학 편지 */
 .join_letter{
@@ -282,6 +298,7 @@ body{
     filter: drop-shadow(2px 4px 20px #c3bfb8);
     padding: 28px 60px;
     color: #4a4233;
+    
 }
 
 #join_letter_logo{
