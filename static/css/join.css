@@ -283,7 +283,14 @@ input[type="checkbox"] {
   }
 
   input[type="checkbox"]:checked {
-    background-color: #4e4e4e;
+    border: none !important;
+    background-image: url(../img/checkmark.png) !important;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    width: 20px !important;
+    height: 20px !important;
+    margin-right: 4px !important;
   }
 
 /* 입학 편지 */
