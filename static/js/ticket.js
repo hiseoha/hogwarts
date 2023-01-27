@@ -35,14 +35,16 @@
     const $login_btn = document.querySelector('.login_form_btn');
     
     $login_btn.addEventListener('click', e=>{
-        const $u_id = document.querySelector("input[name='u_id']").value, $u_pw = document.querySelector("input[name='u_pw']").value;
+        const $u_id = document.querySelector("input[name='u_id']"), $u_pw = document.querySelector("input[name='u_pw']");
         e.preventDefault();
-        if(!$u_id){
+        if(!$u_id.value){
             alert('아이디를 입력해 주세요.');
+            $u_id.focus();
             return false;
         }
-        if(!$u_pw){
+        if(!$u_pw.value){
             alert('비밀번호를 입력해 주세요.');
+            $u_pw.focus();
             return false;
         }
 
@@ -50,8 +52,8 @@
     
         function postLoginData(){
             const data = {
-                id: $u_id,
-                pw: $u_pw,
+                id: $u_id.value,
+                pw: $u_pw.value,
             }
             axios.post('http://localhost:3001/login', data)
             .then(data => console.log(data.data));
@@ -61,6 +63,5 @@
         document.getElementById('login_frm').submit();
 
     })
-
 
 })();
