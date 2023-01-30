@@ -2,20 +2,38 @@
     const $input = document.querySelectorAll('.join_alert_input');
     const $joinAlert = document.querySelectorAll('.join_alert');
 
+    //blur
     $input.forEach((ele, idx) => {
         ele.addEventListener('blur', e=>{
             if(!ele.value){
                 $joinAlert[idx].classList.toggle('hidden', false);
             } else{
                 if(!idx){
+                    $joinAlert[idx].classList.toggle('hidden', true);
+                } else if(idx === 1){
                     idReg(ele, idx);
-                } else if(idx===1){
-                    pwReg(ele, idx);
                 } else if(idx ===2){
+                    pwReg(ele, idx);
+                } else if(idx === 3){
                     cpw(idx);
+                } else if(idx === 4){
+                    emailReg(ele, idx);
                 }
             }
         });
+    })
+
+    //keyup
+    $input.forEach((ele, idx)=>{
+        ele.addEventListener('keyup', e=>{
+            if(idx === 1){
+                idReg(ele, idx);
+            } else if(idx ===2){
+                pwReg(ele, idx);
+            } else if(idx === 3){
+                cpw(idx);
+            }
+        })
     })
 
     //아이디 정규식
@@ -40,7 +58,7 @@
 
     //비밀번호 확인
     function cpw(idx){
-        if($input[1].value !== $input[2].value){
+        if($input[2].value !== $input[3].value){
             $joinAlert[idx].classList.toggle('hidden', false);
         } else{
             $joinAlert[idx].classList.toggle('hidden', true);
@@ -48,9 +66,8 @@
     }
 
     //주소 입력
-    
     const $joinSearchBtn = document.querySelector('.join_search_btn');
-    $joinSearchBtn.addEventListener('click', kakaopost());
+    $joinSearchBtn.addEventListener('click', kakaopost);
 
     function kakaopost() {
         new daum.Postcode({
@@ -59,8 +76,8 @@
 
                 // 각 주소의 노출 규칙에 따라 주소를 조합한다.
                 // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
-                var addr = ''; // 주소 변수
-                var extraAddr = ''; // 참고항목 변수
+                let addr = ''; // 주소 변수
+                let extraAddr = ''; // 참고항목 변수
 
                 //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
                 if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
@@ -85,25 +102,77 @@
                         extraAddr = ' (' + extraAddr + ')';
                     }
                     // 조합된 참고항목을 해당 필드에 넣는다.
-                    document.getElementById("sample6_extraAddress").value = extraAddr;
+                    document.querySelector(".u_address").value = extraAddr;
                 
                 } else {
-                    document.getElementById("sample6_extraAddress").value = '';
+                    document.querySelector(".u_address").value = '';
                 }
 
                 // 우편번호와 주소 정보를 해당 필드에 넣는다.
-                document.getElementById('sample6_postcode').value = data.zonecode;
-                document.getElementById("sample6_address").value = addr;
+                document.querySelector(".u_address").value = addr;
                 // 커서를 상세주소 필드로 이동한다.
-                document.getElementById("sample6_detailAddress").focus();
+                document.querySelector(".u_dAddress").focus();
             }
         }).open(
             {
-    // left: (window.screen.width / 2) - (width / 2),
-    // top: (window.screen.height / 2) - (height / 2),
     popupName: 'postcodePopup',
     // autoClose: false,
 }
 )};
-    
+
+    //이메일 정규식
+    function emailReg(ele, idx){
+        const EmailRegExp =  /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+        if(!EmailRegExp.test(ele.value)){
+            $joinAlert[idx].classList.toggle('hidden', false);
+        } else{
+            $joinAlert[idx].classList.toggle('hidden', true);
+        }
+    }
+
+  //submit만 되게
+  const $joinBtn = document.querySelector('.join_btn');
+
+  $joinBtn.addEventListener('click', e=>{
+    e.preventDefault();
+    const $joinDefAlert = document.querySelectorAll('.join_alert');
+    const $joinDef = document.querySelectorAll('.join_default');
+    let submitResult;
+
+    for(let i=0; i<$joinDefAlert.length; i++){
+        if(!$joinDefAlert[i].classList.contains('hidden') || !$joinDef[i].value) {
+            alert(`${$joinDefAlert[i].innerHTML.replace('* ','')}`);
+            $joinDef[i].focus();
+            $joinDefAlert[i].classList.toggle('hidden', false);
+            submitResult = false;
+            return false;
+        } else {
+            submitResult = true;
+        }
+    }
+
+    if(!submitResult){
+        return false;
+    } 
+
+    document.getElementById('join_frm').submit();
+    // 입학 편지
+
+    const $joinLetter = document.querySelector('.join_letter');
+    const $toName = document.querySelector('.join_letter_userName');
+
+    $toName.innerHTML = `${document.querySelector('.toName').value}`;
+
+    $joinLetter.classList.remove('hidden');
+    window.scrollTo(0,0);
+})
+
+
+    // 편지 닫음
+    const $letterCloseBtn = document.querySelector('.join_letter_closeBtn');
+
+    $letterCloseBtn.addEventListener('click', ()=>{
+        location.replace('http://192.168.0.132:3001/login');
+    })
+
 })();
