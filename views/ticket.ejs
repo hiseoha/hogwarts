@@ -12,7 +12,9 @@
 <body>
     <div class="body">
         <div>호그와트</div>
-        <div class="login_btn">로그인</div>
+        <div class="login_btn">
+            <%= session ? '로그아웃' : '로그인' %>
+        </div>
     </div>
     <form method="post" action="" id="login_frm">
         <div class="login_modal">
@@ -85,6 +87,5 @@
 </body>
 <script src="../static/js/ticket.js"></script>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-
 
 </html>

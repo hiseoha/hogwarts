@@ -17,8 +17,10 @@
     "express": "^4.18.2",
     "express-session": "^1.17.3",
     "http": "^0.0.1-security",
+    "memorystore": "^1.6.7",
     "mysql": "^2.18.1",
     "nodemon": "^2.0.20",
+    "nunjucks": "^3.2.3",
     "session": "^0.1.0"
   }
 }
